@@ -1,4 +1,5 @@
-Responsive Whatsapp Clone app that features
+## Responsive Whatsapp Clone app 
+that features
 
 Video Call implementation
 Google Login and authentication
