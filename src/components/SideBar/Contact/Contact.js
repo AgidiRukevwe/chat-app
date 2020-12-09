@@ -22,7 +22,7 @@ function Contact({ contact, id, contactId }) {
 
         console.log(contactId);
         db.collection("users")
-            .where("id", "==", contact.id)
+            .where("id", "==", contactId)
             .get()
             .then((snapshot) => {
                 snapshot.forEach((doc) => {
@@ -43,7 +43,6 @@ function Contact({ contact, id, contactId }) {
         <div className="sidebar__contact" onClick={selectContact}>
             <Avatar src={contact?.avatar} className="sidebar__contactAvatar" />
             <div className="sidebar__contactInfo">
-                {/* <h3>{receiver === null ? contact : receiver.name}</h3> */}
                 <h3>{contact?.name}</h3>
 
                 <p>Hello World</p>

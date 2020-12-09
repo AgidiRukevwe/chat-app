@@ -56,7 +56,13 @@ function Chat(props) {
                     <div className="chat__headerLeft">
                         <Avatar src={receiver?.avatar} />
                         <div className="chat__info">
-                            <h4>{receiver?.name}</h4>
+                            <h4>
+                                {window.innerWidth > 870
+                                    ? receiver?.name
+                                    : receiver?.name
+                                          .substring(0, 10)
+                                          .concat("...")}
+                            </h4>
                             <p>Last Seen</p>
                         </div>
                     </div>

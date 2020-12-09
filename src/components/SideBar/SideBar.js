@@ -36,7 +36,7 @@ function Sidebar(props) {
             .get()
             .then((querySnapshot) => {
                 querySnapshot.forEach((doc) => {
-                    console.log(doc);
+                    console.log(window.innerWidth);
                     let combinedUsersId;
                     let data = doc.data();
 
@@ -57,6 +57,8 @@ function Sidebar(props) {
                             createdBy: user.uid,
                             createdAt: firebase.firestore.FieldValue.serverTimestamp(),
                             chatRoomId: combinedUsersId,
+
+                            membersId: [user.id, data.id],
 
                             members: [
                                 {
@@ -83,16 +85,10 @@ function Sidebar(props) {
             .where("membersId", "array-contains", user.uid)
             .get()
             .then((snapshot) => {
+                // console.log(snapshot.docs);
                 setChannels(
                     snapshot.docs.map((doc) => ({
                         id: doc.data().chatRoomId,
-                        contactId: doc
-                            .data()
-                            .membersId.find((id) => id !== user.id),
-
-                        // contactDetails: doc
-                        //     .data()
-                        //     .members.find((detail) => detail.name !== user.name)
 
                         contactDetails: doc
                             .data()
@@ -130,12 +126,11 @@ function Sidebar(props) {
             {channels.map((channel) => (
                 <div className="sidebar__contactList" key={channel.id}>
                     <Contact
-                        contactId={channel.contactId}
+                        contactId={channel.contactDetails.id}
                         id={channel.id}
                         newContact={newContact}
                         contact={channel.contactDetails}
                     />
-                    {console.log(channel.contactDetails?.name)}
                 </div>
             ))}
 
