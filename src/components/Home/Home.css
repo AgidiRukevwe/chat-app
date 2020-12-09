@@ -1,0 +1,13 @@
+.home {
+    display: flex;
+    position: fixed;
+    width: 100%;
+}
+
+.sidebar {
+    flex: 0.3;
+}
+
+.chat {
+    flex: 0.7;
+}

@@ -1,0 +1,34 @@
+/* .message > p {
+    position: absolute;
+    background-color: white;
+} */
+
+.message_other {
+    background-color: white;
+    padding: 5px 20px;
+    width: fit-content;
+    margin: 10px 100px;
+    margin-right: auto;
+    border-radius: 10px;
+    text-align: right;
+}
+
+.message_user {
+    background-color: #dcf8c6;
+    padding: 5px 20px;
+    width: fit-content;
+    margin: 10px 100px;
+    margin-left: auto;
+    border-radius: 10px;
+    text-align: left;
+}
+
+.message__img-container {
+    max-height: 200px;
+    max-width: 200px;
+}
+
+.message__img {
+    max-height: 100%;
+    max-width: 100%;
+}

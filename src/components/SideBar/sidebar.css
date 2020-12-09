@@ -1,0 +1,90 @@
+.sidebar {
+    flex: 0.3;
+    height: 100vh;
+    border-right: 1px solid lightgrey;
+    background-color: white;
+    min-width: 300px;
+}
+
+.sidebar__header {
+    display: flex;
+    position: sticky;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: var(--whatsapp-grey);
+}
+
+.sidebar__headerRight * {
+    padding-right: 20px;
+}
+
+.sidebar__search {
+    position: relative;
+    background-color: #f6f6f6;
+    /* margin: 10px; */
+}
+
+.sidebar__search input {
+    position: relative;
+    background-color: white;
+    border: none;
+    border-radius: 20px;
+    width: 90%;
+    padding: 10px;
+    margin: 8px;
+
+    transform-origin: center;
+}
+
+.sidebar__search input:focus {
+    outline: none;
+}
+
+.sidebar__contact {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    /* margin-top: 5; */
+}
+
+.sidebar__contact > .MuiAvatar-root {
+    height: 50px;
+    width: 50px;
+}
+
+.sidebar__contactInfo {
+    flex: 0.9;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 0.5px solid lightgrey;
+}
+.sidebar__contactInfo h3 {
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: -8px;
+}
+
+.sidebar__contactInfo p {
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.sidebar__contactInfo hr {
+    border: 0.1px solid lightgrey;
+}
+
+/* @media screen and (max-width: 830px){
+    .sidebar{
+        position: fixed;
+        flex: .7;
+    }
+    } */
+@media screen and (max-width: 780px) {
+    .sidebar {
+        /* position: fixed; */
+        flex: 1;
+        z-index: 1;
+        width: 100%;
+    }
+}

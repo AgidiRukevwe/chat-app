@@ -1,0 +1,107 @@
+.chat__global {
+    display: flex;
+    background-color: coral;
+
+    flex: 0.7;
+}
+
+.chat {
+    background-color: #e5ddd5;
+    background: url("C:/Users/Rukky/whatsapp/whatsapp_/src/assets/whatsapp background.jpg")
+        repeat;
+    background-size: contain;
+    /* width: 100%; */
+    flex: 1;
+    /* transition: all 1s ease-in; */
+}
+
+.chat__flex {
+    transition: all 1s ease-in;
+    flex: 0.5;
+}
+
+.chat__header {
+    display: flex;
+    min-width: fit-content;
+    max-width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    height: 40px;
+    background-color: var(--whatsapp-grey);
+    padding: 10px;
+}
+
+.chat__headerLeft {
+    position: relative;
+    flex: 0.3;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.chat__headerLeft .chat__info {
+    width: 20vw;
+}
+
+.chat__headerLeft .chat__info h4 {
+    font-size: 15px;
+    font-weight: 400;
+    margin-bottom: -6px;
+    /* margin-bottom: 0px; */
+}
+.chat__headerLeft .chat__info p {
+    font-size: 13px;
+    font-weight: 400;
+    margin-bottom: 5;
+}
+.chat__header .MuiAvatar-root {
+    margin-right: 10px;
+}
+
+.chat__headerRight ul {
+    position: relative;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.chat__headerRight ul li {
+    padding-right: 40px;
+}
+
+.chat__body {
+    position: fixed;
+    top: 60px;
+    bottom: 60px;
+    left: 23.09vw;
+    right: 0;
+    overflow-y: scroll;
+}
+.chat__body2 {
+    right: 23vw;
+}
+
+@media screen and (max-width: 830px) {
+    .chat__global {
+        flex: 1;
+        z-index: -1;
+    }
+}
+
+/* @media screen and (max-width: 780px) {
+    .chat {
+        position: fixed;
+        flex: 0.5;
+    }
+} */
+
+/* @media screen and (max-width: 500px) {
+    .chat { */
+/* width: 50%; */
+/* display: none;
+        flex: 0; */
+/* margin: 0 auto; */
+/* }
+} */

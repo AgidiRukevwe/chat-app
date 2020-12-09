@@ -1,0 +1,49 @@
+.receiver {
+    /* position: absolute; */
+    display: flex;
+    flex: 0.5;
+    flex-direction: column;
+    align-items: center;
+    /* background-color: white; */
+    background-color: red;
+    z-index: 5;
+    transform: translateX(0);
+    transition: all 0.1s ease-in;
+    right: auto;
+}
+
+.hidden {
+    opacity: 0;
+    height: 0;
+    width: 0;
+    flex: 0;
+    right: 50vw;
+
+    transform: translateX(100%);
+}
+
+.receiver__header {
+    background-color: var(--whatsapp-grey);
+    border-left: 1px solid lightgrey;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.receiver__header .receiver__close {
+    transform: translateY(10%);
+}
+
+.receiverInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+}
+
+.receiverInfo > .MuiAvatar-root {
+    height: 200px;
+    width: 200px;
+}

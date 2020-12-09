@@ -1,0 +1,59 @@
+.chat__input {
+    padding: 0px 10px;
+    margin-top: 83vh;
+    width: 100%;
+    background-color: var(--whatsapp-grey);
+
+    z-index: 1;
+}
+
+.chat__inputInner {
+    position: relative;
+    list-style: none;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    padding-left: 3%;
+}
+
+.chat__inputInner li {
+    padding-right: 20px;
+    color: grey;
+}
+
+.chat__fileInput {
+    opacity: 0;
+    width: 0;
+}
+
+.chat__text {
+    width: 75%;
+}
+
+.chat__input .chat__textInput {
+    width: 100%;
+    background-color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 13px;
+    margin: 8px;
+}
+
+.chat__input .chat__textInput:focus {
+    outline: none;
+}
+
+.input__button {
+    display: none;
+}
+
+.micIcon {
+    padding: 20px;
+}
+
+@media screen and (max-width: 830px) {
+    .input {
+        width: 100vw;
+    }
+}
