@@ -1,9 +1,9 @@
 ## Responsive Whatsapp Clone app 
 that features
 
-Video Call implementation
-Google Login and authentication
-On on one chat implementation
+Video Call implementation, <br/>
+Google Login and authentication, <br/>
+On on one chat implementation, <br/>
 
 Technologies used:
 React, Webrtc , Framer Motion, Material Ui, Firebase
