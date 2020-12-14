@@ -74,12 +74,46 @@
     border: 0.1px solid lightgrey;
 }
 
-/* @media screen and (max-width: 830px){
-    .sidebar{
-        position: fixed;
-        flex: .7;
-    }
-    } */
+.sidebar__modal {
+    display: grid;
+    place-items: center;
+}
+
+/* modal styling below */
+
+.modal__modal {
+    position: absolute;
+    background-color: white;
+    border-radius: 5%;
+    height: 180px;
+    width: fit-content;
+    padding: 40px;
+    display: grid;
+    place-items: center;
+}
+
+/* .MuiSvgIcon-root {
+    position: absolute;
+    background-color: pink !important;
+    right: 0;
+    padding: 5px;
+    top: 0;
+} */
+
+.modal__close {
+    position: absolute;
+    right: 0;
+    padding: 10px;
+    color: grey;
+    top: 0;
+}
+
+.modal__btn {
+    padding: 20px;
+}
+
+/* modal styling above */
+
 @media screen and (max-width: 780px) {
     .sidebar {
         /* position: fixed; */

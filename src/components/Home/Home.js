@@ -13,15 +13,12 @@ import AddContact from "../SideBar/AddContact/AddContact";
 import ReceiverInfo from "../ReceiverInfo/ReceiverInfo";
 import { actionTypes } from "../utilities/Reducer";
 import VideoCall from "../Chat/VideoCall/VideoCall";
+import IncomingVideoCall from "../Chat/VideoCall/IncomingVideoCall/IncomingVideoCall";
 
 function Home() {
     // const [user, setUser] = useState(null);
     const [{ user, isVisible, room_Id }, dispatch] = useStateValue();
     const [userEmail, setUserEmail] = useState("");
-
-    // useEffect(() => {
-    //     setUserEmail(localStorage.getItem("email"));
-    // }, []);
 
     const showReceiverInfo = () => {
         dispatch({
@@ -37,13 +34,14 @@ function Home() {
                 <Login />
             ) : (
                 <Router>
+                    <IncomingVideoCall />
                     <Sidebar
                         className="sidebar"
                         showReceiverInfo={showReceiverInfo}
                     />
 
                     <Switch>
-                        <Route exact path={`/room/video/:roomId`}>
+                        <Route exact path={`/room/:roomId/video`}>
                             <VideoCall />
                         </Route>
                         <Route exact path={`/room/:roomId`}>

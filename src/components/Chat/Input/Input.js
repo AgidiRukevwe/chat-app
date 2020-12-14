@@ -7,6 +7,7 @@ import MicIcon from "@material-ui/icons/Mic";
 import db, { firebaseApp } from "../../../firebase";
 import firebase from "firebase";
 import { useStateValue } from "../../utilities/StateProvider";
+import FileType from "./fileType/FileType";
 
 function Input({ roomId, messages, setMessages }) {
     const [input, setInput] = useState("");
@@ -69,6 +70,10 @@ function Input({ roomId, messages, setMessages }) {
                                 type="file"
                             />
                         </li>
+                        <li>
+                            <FileType />
+                        </li>
+
                         <li className="chat__text">
                             <input
                                 className="chat__textInput"

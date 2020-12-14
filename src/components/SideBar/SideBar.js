@@ -1,42 +1,68 @@
 import React, { useEffect, useState } from "react";
+
 import "./sidebar.css";
 import db from "../../firebase";
-
-import Contact from "./Contact/Contact";
 import firebase from "firebase";
+
+import { actionTypes } from "../utilities/Reducer";
+import { useStateValue } from "../utilities/StateProvider";
+import Contact from "./Contact/Contact";
 
 import Avatar from "@material-ui/core/avatar";
 import DataUsageIcon from "@material-ui/icons/DataUsage";
+import CloseIcon from "@material-ui/icons/Close";
 import ChatIcon from "@material-ui/icons/Chat";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
-import { Button } from "@material-ui/core";
-import { actionTypes } from "../utilities/Reducer";
-import { useStateValue } from "../utilities/StateProvider";
+import AddIcon from "@material-ui/icons/Add";
+import { Button, Modal, TextField } from "@material-ui/core";
+import { SpeedDial } from "@material-ui/lab";
 
 function Sidebar(props) {
     const [{ user, isVisible }] = useStateValue();
     const [{ receiver, chatId }, dispatch] = useStateValue();
+    const [openModal, setOpenModal] = useState(false);
+    const [search, setSearch] = useState("");
+    const [closeModal, setCloseModal] = useState(null);
+    const [contactEmail, setContactEmail] = useState(null);
     // const [newContact, setNewContact] = useState();
     const [channels, setChannels] = useState([]);
     // const [combinedUsersId, setCombinedUsersId] = useState();
 
-    let newContact;
-    const addContact = () => {
-        newContact = prompt("add contact");
+    //update search input
+    const updateSearch = (e) => {
+        setSearch(e.target.value);
+        console.log(search);
+    };
 
-        if (newContact === user.email) {
+    //toggle modal
+    const handleModalOpen = () => {
+        setOpenModal(true);
+    };
+    const handleModalClose = () => {
+        setOpenModal(false);
+    };
+    //toggle modal  above
+
+    const addContact = () => {
+        // setOpenModal("open");
+
+        //toggle addContact modal on
+        handleModalOpen();
+
+        //validate email Input
+        if (contactEmail === user.email) {
             alert(`you can't add yourself`);
-            console.log(`you can't add yourself`);
             return false;
+        } else if (contactEmail === "") {
+            alert(console.log("field empty"));
         }
 
         //creating new room between user and the new below
         db.collection("users")
-            .where("email", "==", newContact)
+            .where("email", "==", contactEmail)
             .get()
             .then((querySnapshot) => {
                 querySnapshot.forEach((doc) => {
-                    console.log(window.innerWidth);
                     let combinedUsersId;
                     let data = doc.data();
 
@@ -79,13 +105,12 @@ function Sidebar(props) {
 
     //creating new room between user and the new above
 
-    //getting all the rooms that contains the user and mapping them in the sidebar component below
+    //get all the chat rooms that contains the user and map them in the sidebar component below
     useEffect(() => {
         db.collection("chatrooms")
             .where("membersId", "array-contains", user.uid)
             .get()
             .then((snapshot) => {
-                // console.log(snapshot.docs);
                 setChannels(
                     snapshot.docs.map((doc) => ({
                         id: doc.data().chatRoomId,
@@ -96,6 +121,15 @@ function Sidebar(props) {
                     }))
                 );
             });
+    });
+
+    //filter contents when searched
+    const filteredContacts = channels.filter((channel) => {
+        return (
+            channel.contactDetails.name
+                .toLowerCase()
+                .indexOf(search.toLowerCase()) !== -1
+        );
     });
 
     //getting all the rooms that contains the user and mapping them in the sidebar component above
@@ -110,35 +144,76 @@ function Sidebar(props) {
                     </div>
                     <div className="sidebar__headerRight">
                         <DataUsageIcon />
-                        <ChatIcon />
+
+                        <AddIcon onClick={addContact} />
+
                         <MoreVertIcon onClick={props.showReceiverInfo} />
                     </div>
                 </div>
 
                 {/* this is the sidebar search */}
                 <div className="sidebar__search">
-                    <input placeholder="Search or start new chat" />
+                    <input
+                        placeholder="Search or start new chat"
+                        onChange={updateSearch}
+                    />
                 </div>
             </div>
 
             {/*  sidebar contactlist below */}
 
-            {channels.map((channel) => (
+            {filteredContacts.map((channel) => (
                 <div className="sidebar__contactList" key={channel.id}>
                     <Contact
+                        // contactId={channel.contactDetails.id}
                         contactId={channel.contactDetails.id}
                         id={channel.id}
-                        newContact={newContact}
+                        newContact={contactEmail}
                         contact={channel.contactDetails}
                     />
                 </div>
             ))}
 
-            {/*  sidebar contactlist below */}
+            {/*  sidebar contactlist above */}
 
             <Button color="primary" onClick={addContact}>
-                Add Contact
+                <AddIcon />
             </Button>
+
+            <Modal
+                disablePortal
+                open={openModal}
+                onClose={handleModalClose}
+                disableEnforceFocus
+                disableAutoFocus
+                aria-labelledby="server-modal-title"
+                aria-describedby="server-modal-description"
+                className={"sidebar__modal"}
+            >
+                <div className={"modal__modal"}>
+                    <CloseIcon
+                        className="modal__close"
+                        onClick={handleModalClose}
+                    />
+                    <h2 className="modal__title" id="server-modal-title">
+                        Add Email
+                    </h2>
+                    <TextField
+                        id="standard-basic"
+                        className="modal__input"
+                        label="Contact List"
+                        onChange={(e) => setContactEmail(e.target.value)}
+                    />
+                    <Button
+                        variant="outlined"
+                        className="modal__btn"
+                        color="primary"
+                        onClick={addContact}
+                    >
+                        Add Friend
+                    </Button>
+                </div>
+            </Modal>
         </div>
     );
 }

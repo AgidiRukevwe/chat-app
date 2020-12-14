@@ -9,7 +9,7 @@ import { actionTypes } from "../../utilities/Reducer";
 
 function Contact({ contact, id, contactId }) {
     const history = useHistory();
-    const [{ receiver }, dispatch] = useStateValue();
+    const [{ receiver, room_Id }, dispatch] = useStateValue();
 
     const selectContact = async () => {
         if (id) {
@@ -25,6 +25,9 @@ function Contact({ contact, id, contactId }) {
             .where("id", "==", contactId)
             .get()
             .then((snapshot) => {
+                console.log(snapshot);
+                console.log("test");
+
                 snapshot.forEach((doc) => {
                     console.log(doc.data());
                     const data = doc.data();

@@ -1,26 +1,38 @@
 .video {
-    flex: 0.7;
-    right: 0;
     position: absolute;
+    flex: 0.7;
+    top: -500px;
+    right: 0px;
     width: fit-content;
     z-index: 5;
     top: 60px;
+    background-color: pink;
+    height: 100%;
+    width: 100%;
 }
 
-.video__video {
-    background-color: blue;
-    width: 20%;
+.user {
+    position: absolute;
+    bottom: 10vw;
+    right: 20px;
+    pointer-events: none;
+    /* background-color: blue; */
+    width: 20vw;
+    height: 20vh;
+    background-color: pink;
+    z-index: 5;
 }
-
+/* 
 .video__test {
     background-color: coral;
-    width: 20%;
-}
+    width: 100vw;
+    height: 100vh;
+} */
 
-.video__receiver {
-    background-color: red;
-    height: 30%;
-    width: 20%;
+.receiver {
+    /* background-color: red; */
+    height: 100%;
+    width: 100%;
 }
 
 .video__inActive {

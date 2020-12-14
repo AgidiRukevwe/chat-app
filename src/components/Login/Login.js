@@ -56,7 +56,7 @@ function Login() {
             <div className="login__container">
                 <WhatsAppIcon className="login__logo" />
                 <Button
-                    className="login__logo"
+                    className="login__button"
                     variant="outlined"
                     color="primary"
                     onClick={signIn}

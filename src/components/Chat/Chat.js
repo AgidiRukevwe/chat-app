@@ -70,10 +70,12 @@ function Chat(props) {
                     <div className="chat__headerRight">
                         <ul>
                             <li>
-                                <VideocamIcon
-                                    className="video__icon"
-                                    onClick={startCall}
-                                />
+                                <Link to={`/room/${roomId}/video`}>
+                                    <VideocamIcon
+                                        className="video__icon"
+                                        onClick={startCall}
+                                    />
+                                </Link>
                             </li>
 
                             <li>
@@ -106,12 +108,6 @@ function Chat(props) {
                 className="chatRight"
                 showReceiverInfo={props.showReceiverInfo}
             />
-
-            {/* <VideoCall
-                roomId={roomId}
-                display={display}
-                setDisplay={setDisplay}
-            /> */}
         </div>
     );
 }

@@ -19,38 +19,38 @@ function AddContact() {
         });
     });
 
-    const onTextChange = (e) => {
-        let suggestion = [];
-        const value = e.target.value;
-        if (value.length > 0) {
-            const regex = new RegExp(`^${value}`, "i");
-            // suggestion = list.sort().filter((v) => v.text(regex));
-            suggestion = list.map((item) => {
-                item.sort().filter((v) => v.test(regex));
-            });
-        }
-        this.setSuggestions({ suggestion });
-    };
+    // const onTextChange = (e) => {
+    //     let suggestion = [];
+    //     const value = e.target.value;
+    //     if (value.length > 0) {
+    //         const regex = new RegExp(`^${value}`, "i");
+    //         // suggestion = list.sort().filter((v) => v.text(regex));
+    //         suggestion = list.map((item) => {
+    //             item.sort().filter((v) => v.test(regex));
+    //         });
+    //     }
+    //     this.setSuggestions({ suggestion });
+    // };
 
-    const renderSuggestions = () => {
-        if (suggestions.length === 0) {
-            return null;
-        }
-        suggestions.map((item) => (
-            <ul>
-                <li key={item.items}>{item.items}</li>
-            </ul>
-        ));
-    };
+    // const renderSuggestions = () => {
+    //     if (suggestions.length === 0) {
+    //         return null;
+    //     }
+    //     suggestions.map((item) => (
+    //         <ul>
+    //             <li key={item.items}>{item.items}</li>
+    //         </ul>
+    //     ));
+    // };
 
     return (
         <div className="addContact">
             <input
                 type="text"
-                onChange={onTextChange}
+                // onChange={onTextChange}
                 placeholder="Type in email"
             />
-            {renderSuggestions}
+            {/* {renderSuggestions} */}
         </div>
     );
 }

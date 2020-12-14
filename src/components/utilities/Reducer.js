@@ -4,7 +4,8 @@ export const initialState = {
     isVisible: false,
     showReceiverInfo: null,
     videoCall: false,
-
+    answerCall: false,
+    hangUp: false,
     room_Id: null
 };
 
@@ -14,6 +15,8 @@ export const actionTypes = {
     SET_VISIBLE: "SET_VISIBLE",
     SET_SHOW_RECEIVER_INFO: "SET_SHOW_RECEIVER_INFO",
     SET_VIDEOCALL: "SET_VIDEOCALL",
+    SET_ANSWERCALL: "SET_ANSWERCALL",
+    SET_HANGUP: "SET_HANGUP",
     SET_ROOM_ID: "SET_ROOM_ID"
 };
 
@@ -45,6 +48,16 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 videoCall: action.videoCall
+            };
+        case actionTypes.SET_ANSWERCALL:
+            return {
+                ...state,
+                answerCall: action.answerCall
+            };
+        case actionTypes.SET_HANGUP:
+            return {
+                ...state,
+                hangUp: action.hangUp
             };
 
         case actionTypes.SET_ROOM_ID:

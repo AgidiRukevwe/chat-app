@@ -1,17 +1,21 @@
 .chat__global {
     display: flex;
-    background-color: coral;
-
+    /* background-color: coral; */
+    right: 0;
     flex: 0.7;
 }
 
 .chat {
     background-color: #e5ddd5;
+    /* position: relative; */
+    position: fixed;
+
     background: url("C:/Users/Rukky/whatsapp/whatsapp_/src/assets/whatsapp background.jpg")
         repeat;
     background-size: contain;
-    /* width: 100%; */
+    width: 70vw;
     flex: 1;
+
     /* transition: all 1s ease-in; */
 }
 
@@ -72,21 +76,24 @@
 }
 
 .chat__body {
-    position: fixed;
+    position: absolute;
     top: 60px;
     bottom: 60px;
-    left: 23.09vw;
+    width: 100%;
+    overflow-y: scroll;
+    /* background: red;  */
+    /* left: 23.09vw; */
     right: 0;
     overflow-y: scroll;
-}
-.chat__body2 {
-    right: 23vw;
 }
 
 @media screen and (max-width: 830px) {
     .chat__global {
         flex: 1;
         z-index: -1;
+    }
+    .chat {
+        width: 100vw;
     }
 }
 

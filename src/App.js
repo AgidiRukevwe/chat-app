@@ -13,6 +13,7 @@ import Sidebar from "./components/SideBar/SideBar";
 import Chat from "./components/Chat/Chat";
 import { useStateValue } from "./components/utilities/StateProvider";
 import Login from "./components/Login/Login";
+import IncomingVideoCall from "./components/Chat/VideoCall/IncomingVideoCall/IncomingVideoCall";
 
 function App() {
     const [{ user }] = useStateValue();
@@ -25,16 +26,18 @@ function App() {
                             !user ? (
                                 <Login />
                             ) : (
-                                <Switch>
-                                    <Route exact path="/sidebar">
-                                        <Sidebar />
-                                    </Route>
-                                    <Route exact path="/room/:roomId">
-                                        <Chat />
-                                    </Route>
+                                <>
+                                    <Switch>
+                                        <Route exact path="/sidebar">
+                                            <Sidebar />
+                                        </Route>
+                                        <Route path="/room/:roomId">
+                                            <Chat />
+                                        </Route>
 
-                                    <Redirect from="/" to="/sidebar" />
-                                </Switch>
+                                        <Redirect from="/" to="/sidebar" />
+                                    </Switch>
+                                </>
                             )
                         ) : (
                             <Home />

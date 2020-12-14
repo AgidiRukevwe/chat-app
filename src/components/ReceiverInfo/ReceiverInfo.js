@@ -32,7 +32,10 @@ function ReceiverInfo({ showReceiverInfo }) {
             </div>
             <div className="receiverInfo">
                 <Avatar src={receiver === null ? "" : receiver.avatar} />
-                <p>{receiver === null ? "" : receiver.name}</p>
+                <p>
+                    <strong>{receiver === null ? "" : receiver.name}</strong>
+                </p>
+                <p>{receiver === null ? "" : receiver?.email}</p>
                 <p>online</p>
             </div>
 

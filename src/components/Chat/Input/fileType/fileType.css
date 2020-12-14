@@ -1,0 +1,26 @@
+.fileType {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    bottom: 10vw;
+}
+.fileType__icon {
+    font-size: xx-large !important;
+    color: white;
+    border-radius: 50%;
+    padding: 5px;
+    margin: 5%;
+}
+
+.--image {
+    background-color: rgb(78, 208, 87);
+}
+.--document {
+    background-color: blue;
+}
+.--music {
+    background-color: rgb(176, 7, 150);
+}
+.--video {
+    background-color: rgb(164, 2, 2);
+}
